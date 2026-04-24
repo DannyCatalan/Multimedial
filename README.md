@@ -1,2 +1,2 @@
 # Multimedial
-mauricioroman.cl/multimedial
+https://mauricixx.github.io/multimedial
