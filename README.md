@@ -1,2 +1,2 @@
 # Multimedial
-https://mauricixx.github.io/multimedial
+#### Exploración creativa de arte, tecnología y medios digitales interactivos.
