@@ -1,1 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Obra</title>
 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: white;
+      color: black;
+      font-family: "Courier New", monospace;
+      min-height: 100vh;
+    }
+
+    .menu {
+      position: fixed;
+      top: 40px;
+      left: 40px;
+      z-index: 100;
+    }
+
+    .menu .logo {
+      display: block;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      letter-spacing: 3px;
+      color: black;
+      text-decoration: underline;
+      text-decoration-color: black;
+      text-underline-offset: 6px;
+    }
+
+    .menu .logo:hover { opacity: 0.6; }
+
+    .menu a {
+      display: block;
+      font-size: 13px;
+      color: black;
+      text-decoration: none;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .menu a:hover { opacity: 0.6; }
+
+    .contenido {
+      margin-left: 200px;
+      padding: 50px 60px;
+    }
+
+    .titulo-seccion {
+      font-size: 36px;
+      font-weight: normal;
+      letter-spacing: 12px;
+      text-transform: uppercase;
+      margin-bottom: 60px;
+      margin-top: 60px;
+    }
+
+    .apartado {
+      margin-bottom: 80px;
+    }
+
+    .apartado-titulo {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid black;
+    }
+
+    .grilla {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .item {
+      cursor: pointer;
+    }
+
+    .item video {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      background-color: #f0f0f0;
+      filter: blur(4px);
+      transition: filter 0.3s ease;
+    }
+
+    .item:hover video {
+      filter: blur(0px);
+    }
+
+    .item-titulo {
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-top: 8px;
+      text-transform: uppercase;
+    }
+
+    .item-año {
+      font-size: 12px;
+      color: #666;
+      margin-top: 2px;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.97);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 40px;
+    }
+
+    .lightbox.activo {
+      display: flex;
+    }
+
+    .lightbox-cerrar {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      font-family: "Courier New", monospace;
+    }
+
+    .lightbox-cerrar:hover { opacity: 0.5; }
+
+    .lightbox video {
+      max-width: 70vw;
+      max-height: 60vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .lightbox-info {
+      margin-top: 24px;
+      text-align: center;
+      max-width: 620px;
+    }
+
+    .lightbox-info h2 {
+      font-size: 13px;
+      font-weight: normal;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .lightbox-info p {
+      font-size: 12px;
+      color: #444;
+      line-height: 1.9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="menu">
+    <a class="logo" href="index.html">TRÁNS-ITO MARICA</a>
+    <a href="obra.html">Obra</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+
+  <div class="contenido">
+
+    <h1 class="titulo-seccion">Obra</h1>
+
+    <!-- VIDEOARTE -->
+    <div class="apartado">
+      <p class="apartado-titulo">Videoarte</p>
+      <div class="grilla">
+
+        <div class="item"
+          data-tipo="video"
+          data-src="beauty.mp4"
+          data-titulo="Beauty...?"
+          data-año="2025"
+          data-desc="Video performance inspirado en la performance &quot;Art must be beautiful…&quot; de Marina Abramović. A diferencia de Abramović, este video performance utiliza el maquillaje y el acto repetitivo de maquillarse y desmaquillarse, en protesta del estándar de belleza impuesto por la sociedad."
+          onclick="abrirLightbox(this)">
+          <video src="beauty.mp4" muted></video>
+          <p class="item-titulo">Beauty...?</p>
+          <p class="item-año">2025</p>
+        </div>
+
+        <div class="item"
+          data-tipo="video"
+          data-src="Hermosa_Juventud.MOV"
+          data-titulo="Hermosa Juventud"
+          data-año="2025"
+          data-desc="Video performance realizada en conjunto, a inspiración del poema del mismo título, escrito por Gottfried Benn."
+          onclick="abrirLightbox(this)">
+          <video src="Hermosa_Juventud.MOV" muted></video>
+          <p class="item-titulo">Hermosa Juventud</p>
+          <p class="item-año">2025</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-cerrar" onclick="cerrarLightbox()">✕ cerrar</button>
+    <div id="lightbox-media"></div>
+    <div class="lightbox-info">
+      <h2 id="lightbox-titulo"></h2>
+      <p id="lightbox-desc"></p>
+    </div>
+  </div>
+
+  <script>
+    function abrirLightbox(el) {
+      const tipo   = el.dataset.tipo;
+      const src    = el.dataset.src;
+      const titulo = el.dataset.titulo;
+      const año    = el.dataset.año;
+      const desc   = el.dataset.desc;
+
+      const media = document.getElementById('lightbox-media');
+      media.innerHTML = '';
+
+      const v = document.createElement('video');
+      v.src = src;
+      v.controls = true;
+      v.autoplay = true;
+      v.style.maxWidth = '70vw';
+      v.style.maxHeight = '60vh';
+      media.appendChild(v);
+
+      document.getElementById('lightbox-titulo').textContent = titulo + ' — AÑO: ' + año;
+      document.getElementById('lightbox-desc').textContent = desc;
+      document.getElementById('lightbox').classList.add('activo');
+    }
+
+    function cerrarLightbox() {
+      document.getElementById('lightbox').classList.remove('activo');
+      document.getElementById('lightbox-media').innerHTML = '';
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') cerrarLightbox();
+    });
+  </script>
+
+</body>
+</html>
