@@ -1,1 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Manifiesto</title>
 
+<style>
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: white;
+    color: black;
+    font-family: "Courier New", monospace;
+    min-height: 100vh;
+  }
+
+  /* MENÚ LATERAL */
+  .menu {
+    position: fixed;
+    top: 40px;
+    left: 40px;
+  }
+
+  .menu .logo {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+    color: black;
+    text-decoration: none;
+  }
+
+  .menu .logo:hover {
+    text-decoration: underline;
+  }
+
+  .menu a {
+    display: block;
+    font-size: 13px;
+    color: #999;
+    text-decoration: none;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+
+  .menu a:hover {
+    color: black;
+  }
+
+  /* LAYOUT PRINCIPAL */
+  .layout {
+    margin-left: 200px;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 60px;
+    padding: 80px 60px 80px 80px;
+  }
+
+  /* COLUMNA IZQUIERDA */
+  .texto-manifiesto {
+    text-align: center;
+  }
+
+  .texto-manifiesto p {
+    font-size: 13px;
+    line-height: 2;
+    margin-bottom: 30px;
+    color: #222;
+  }
+
+  .destacado {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 1.8;
+    margin: 50px 0;
+    color: black;
+  }
+
+  .cierre {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-top: 60px;
+    line-height: 2;
+  }
+
+  .firma {
+    font-size: 12px;
+    color: #999;
+    letter-spacing: 2px;
+    margin-top: 60px;
+  }
+
+  /* COLUMNA DERECHA: sidebar */
+  .sidebar {
+    padding-top: 10px;
+  }
+
+  .sidebar-bloque {
+    margin-bottom: 50px;
+  }
+
+  .sidebar-bloque .etiqueta {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #999;
+    margin-bottom: 15px;
+  }
+
+  .sidebar-bloque img {
+    width: 60%;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .link-ig {
+    display: block;
+    font-size: 12px;
+    color: black;
+    text-decoration: none;
+    letter-spacing: 1px;
+    line-height: 1.8;
+    border-bottom: 1px solid black;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+  }
+
+  .link-ig:hover {
+    color: #999;
+  }
+
+  .boton-descarga {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: black;
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .boton-descarga:hover {
+    background-color: black;
+    color: white;
+  }
+
+  /* GALERÍA DE DISTRIBUCIÓN */
+  .seccion-galeria {
+    margin-left: 200px;
+    padding: 0 60px 80px 80px;
+  }
+
+  .seccion-galeria .etiqueta {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #999;
+    margin-bottom: 30px;
+    display: block;
+  }
+
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 12px;
+  }
+
+  .galeria img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;  /* recorta para que queden iguales */
+    display: block;
+  }
+
+  /* Al pasar el mouse se ve completa */
+  .galeria img:hover {
+    opacity: 0.85;
+    cursor: pointer;
+  }
+
+</style>
+
+</head>
+
+<body>
+
+  <!-- MENÚ LATERAL -->
+  <nav class="menu">
+    <a href="index.html" class="logo">TRÁNS-ITO MARICA</a>
+    <a href="obra.html">OBRA</a>
+    <a href="contacto.html">CONTACTO</a>
+  </nav>
+
+  <!-- LAYOUT: manifiesto + sidebar -->
+  <div class="layout">
+
+    <!-- COLUMNA IZQUIERDA -->
+    <div class="texto-manifiesto">
+
+      <p>
+        Se levanta este manifiesto porque ya no alcanza con sobrevivir. 
+        Todxs lxs trans-disidencias viven bajo un abandono que no es casual: 
+        es sistemático, estructural y sostenido por la indiferencia de un país 
+        que se niega a mirar de frente su propia violencia. Se denuncia con 
+        firmeza que la falta de atención no es un error, sino una forma de expulsión.
+      </p>
+
+      <p>
+        Se exige el fin inmediato del maltrato institucional, del desprecio social 
+        y del silencio cómplice. Se rechaza cualquier intento de reducir la existencia 
+        trans-disidente a un debate, a una opinión o a un capricho moral. Las vidas 
+        no se negocian. La dignidad no se posterga. La identidad no necesita permiso.
+      </p>
+
+      <p>
+        Se reclama acceso urgente a salud integral, libre de prejuicios y de prácticas 
+        discriminatorias. Se demanda educación que no expulse, que no corrija la 
+        identidad, que no condene desde la infancia. Se exige empleo real, estable y 
+        digno, sin cerrarle la puerta a nadie por cómo vive, cómo se nombra o cómo 
+        se expresa. Se denuncia el abandono de la justicia, que sigue acumulando 
+        crímenes sin investigar, agresores sin castigo y violencias sin respuesta.
+      </p>
+
+      <p>
+        Se afirma que las personas Trans no solo existen, sino que sostienen, crean, 
+        transforman y resisten. Su presencia es innegociable. No se aceptará más 
+        invisibilización. No se permitirá que se siga marginando a quienes sostienen 
+        la vida desde la autenticidad y el coraje.
+      </p>
+
+      <div class="destacado">
+        NUESTRA EXISTENCIA TAMBIÉN ES REALIDAD Y NO PUEDE SER NEGADA.
+      </div>
+
+      <p>
+        Este manifiesto llama a la acción inmediata. No a promesas vacías, no a 
+        discursos que no cambian nada, no a instituciones que cierran los ojos. 
+        Se exige compromiso, reparación, políticas concretas y protección efectiva.
+      </p>
+
+      <p>
+        Se advierte con claridad: la comunidad trans no retrocederá. No se silenciará. 
+        No aceptará migajas ni espacios tolerados. Exige derechos plenos porque le 
+        pertenecen. Exige respeto porque lo merece. Exige vida digna porque es lo mínimo.
+      </p>
+
+      <div class="cierre">
+        Lxs trans-disidencias no piden permiso.<br>
+        Exigen justicia.<br>
+        No habrá descanso hasta que exista.
+      </div>
+
+      <p class="firma">
+        16 de noviembre de 2025 — Santiago, Chile<br>
+        Danny Catalán
+      </p>
+
+    </div>
+
+    <!-- COLUMNA DERECHA: sidebar -->
+    <div class="sidebar">
+
+      <div class="sidebar-bloque">
+        <p class="etiqueta">PUBLICACIÓN ORIGINAL</p>
+        <a class="link-ig" href="https://www.instagram.com/p/DRIhLn-kvOx/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+          Ver manifiesto en Instagram →
+        </a>
+      </div>
+
+      <div class="sidebar-bloque">
+        <p class="etiqueta">DESCARGAR MATERIALES</p>
+        <img src="poster_paste_up.png" alt="Poster Manifiesto">
+        <a class="boton-descarga" href="poster_paste_up.png" download>
+          DESCARGAR POSTER
+        </a>
+        <img src="sticker.png" alt="Sticker Manifiesto">
+        <a class="boton-descarga" href="sticker.png" download>
+          DESCARGAR STICKER
+        </a>
+        <img src="stickers.jpg" alt="Stickers lámina">
+        <a class="boton-descarga" href="stickers.jpg" download>
+          DESCARGAR LÁMINA STICKERS
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- GALERÍA DE DISTRIBUCIÓN -->
+  <div class="seccion-galeria">
+    <span class="etiqueta">DISTRIBUCIÓN — SANTIAGO, 2025</span>
+
+    <div class="galeria">
+      <img src="metro.jpg" alt="Metro">
+      <img src="metro_2.jpg" alt="Metro 2">
+      <img src="metro_los_leones.jpg" alt="Metro Los Leones">
+      <img src="metro_los_leones_2.jpg" alt="Metro Los Leones 2">
+      <img src="metro_vicuña_mackenna.jpg" alt="Metro Vicuña Mackenna">
+      <img src="micro.jpg" alt="Micro">
+      <img src="micro_2.jpg" alt="Micro 2">
+      <img src="micro_3.jpg" alt="Micro 3">
+      <img src="paradero_micro.jpg" alt="Paradero">
+      <img src="banca.jpg" alt="Banca">
+      <img src="poste.jpg" alt="Poste">
+      <img src="calle_vasconia.jpg" alt="Calle Vasconia">
+      <img src="unifinis.jpg" alt="Unifinis">
+    </div>
+
+  </div>
+
+</body>
+</html>
