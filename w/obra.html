@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Obra</title>
+  <title>Obra - TRÁNS-ITO MARICA</title>
 
   <style>
     * {
@@ -88,7 +88,8 @@
       cursor: pointer;
     }
 
-    .item video {
+    /* Estilo para que imágenes y videos se vean iguales en la grilla */
+    .item video, .item img {
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
@@ -98,7 +99,7 @@
       transition: filter 0.3s ease;
     }
 
-    .item:hover video {
+    .item:hover video, .item:hover img {
       filter: blur(0px);
     }
 
@@ -115,13 +116,13 @@
       margin-top: 2px;
     }
 
-    /* LIGHTBOX */
+    /* LIGHTBOX MEJORADO */
     .lightbox {
       display: none;
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(255,255,255,0.97);
+      background: rgba(255,255,255,0.98);
       z-index: 200;
       justify-content: center;
       align-items: center;
@@ -148,6 +149,24 @@
 
     .lightbox-cerrar:hover { opacity: 0.5; }
 
+    /* Timeline de fotos en escultura */
+    .timeline-fotos {
+      display: flex;
+      gap: 30px;
+      overflow-x: hidden; 
+      max-width: 90vw;
+      padding: 20px;
+      cursor: ew-resize;
+    }
+
+    .timeline-fotos img {
+      height: 55vh;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+      pointer-events: none;
+    }
+
     .lightbox video {
       max-width: 70vw;
       max-height: 60vh;
@@ -158,7 +177,7 @@
     .lightbox-info {
       margin-top: 24px;
       text-align: center;
-      max-width: 620px;
+      max-width: 700px;
     }
 
     .lightbox-info h2 {
@@ -189,7 +208,6 @@
 
     <h1 class="titulo-seccion">Obra</h1>
 
-    <!-- VIDEOARTE -->
     <div class="apartado">
       <p class="apartado-titulo">Videoarte</p>
       <div class="grilla">
@@ -199,7 +217,7 @@
           data-src="beauty.mp4"
           data-titulo="Beauty...?"
           data-año="2025"
-          data-desc="Video performance inspirado en la performance &quot;Art must be beautiful…&quot; de Marina Abramović. A diferencia de Abramović, este video performance utiliza el maquillaje y el acto repetitivo de maquillarse y desmaquillarse, en protesta del estándar de belleza impuesto por la sociedad."
+          data-desc="Video performance inspirado en la performance 'Art must be beautiful…' de Marina Abramović. A diferencia de Abramović, este video performance utiliza el maquillaje y el acto repetitivo de maquillarse y desmaquillarse, en protesta del estándar de belleza impuesto por la sociedad."
           onclick="abrirLightbox(this)">
           <video src="beauty.mp4" muted></video>
           <p class="item-titulo">Beauty...?</p>
@@ -221,12 +239,42 @@
       </div>
     </div>
 
+    <div class="apartado">
+      <p class="apartado-titulo">Esculturas</p>
+      <div class="grilla">
+
+        <div class="item"
+          data-tipo="escultura"
+          data-src="ensamblaje1.jpg, ensamblaje2.jpg, ensamblaje3.jpg, ensamblaje4.jpg, ensamblaje5.jpg, ensamblaje6.jpg, ensamblaje7.jpg, ensamblaje8.jpg, ensamblaje9.jpg, ensamblaje10.jpg"
+          data-titulo="Serie: Ensamblajes"
+          data-año="2025"
+          data-desc="Escultura inspirada en la obra de Lygia Clark, Bichos. Esta obra parte de forma muy experimental tratando de evitar la solución rápida de la soldadura llegue al ensamble, logrando así un resultado que varía según como se arme."
+          onclick="abrirLightbox(this)">
+          <img src="ensamblaje7.jpg" alt="Obra">
+          <p class="item-titulo">Serie: Ensamblajes</p>
+          <p class="item-año">2025</p>
+        </div>
+
+        <div class="item"
+          data-tipo="escultura"
+          data-src="popup.jpg, popup2.jpg"
+          data-titulo="POP-UP"
+          data-año="2025-2026"
+          data-desc="Esta obra aún en proceso surge desde la duda de cómo transformar el Pop-up o la ingeniería del papel en una escultura, en cómo transformar un mecanismo simple de cortar y doblar papel se puede transformar en escultura, variando su materialidad y su técnica."
+          onclick="abrirLightbox(this)">
+          <img src="popup2.jpg" alt="Obra">
+          <p class="item-titulo">POP-UP</p>
+          <p class="item-año">2025-2026</p>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
-  <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
     <button class="lightbox-cerrar" onclick="cerrarLightbox()">✕ cerrar</button>
-    <div id="lightbox-media"></div>
+    <div id="lightbox-media" style="width: 100%; display: flex; justify-content: center;"></div>
     <div class="lightbox-info">
       <h2 id="lightbox-titulo"></h2>
       <p id="lightbox-desc"></p>
@@ -236,23 +284,46 @@
   <script>
     function abrirLightbox(el) {
       const tipo   = el.dataset.tipo;
-      const src    = el.dataset.src;
+      const srcStr = el.dataset.src;
       const titulo = el.dataset.titulo;
       const año    = el.dataset.año;
       const desc   = el.dataset.desc;
 
-      const media = document.getElementById('lightbox-media');
-      media.innerHTML = '';
+      const mediaContainer = document.getElementById('lightbox-media');
+      mediaContainer.innerHTML = '';
 
-      const v = document.createElement('video');
-      v.src = src;
-      v.controls = true;
-      v.autoplay = true;
-      v.style.maxWidth = '70vw';
-      v.style.maxHeight = '60vh';
-      media.appendChild(v);
+      if (tipo === 'video') {
+        const v = document.createElement('video');
+        v.src = srcStr;
+        v.controls = true;
+        v.autoplay = true;
+        v.style.maxHeight = '60vh';
+        mediaContainer.appendChild(v);
+      } 
+      else if (tipo === 'escultura') {
+        const timeline = document.createElement('div');
+        timeline.className = 'timeline-fotos';
+        
+        const fotos = srcStr.split(',');
+        fotos.forEach(fotoRuta => {
+          const img = document.createElement('img');
+          img.src = fotoRuta.trim();
+          timeline.appendChild(img);
+        });
+        
+        // Efecto de movimiento con el cursor para la línea de tiempo
+        timeline.addEventListener('mousemove', (e) => {
+          const rect = timeline.getBoundingClientRect();
+          const x = e.clientX - rect.left; 
+          const porcentaje = x / rect.width;
+          const scrollMax = timeline.scrollWidth - rect.width;
+          timeline.scrollLeft = scrollMax * porcentaje;
+        });
 
-      document.getElementById('lightbox-titulo').textContent = titulo + ' — AÑO: ' + año;
+        mediaContainer.appendChild(timeline);
+      }
+
+      document.getElementById('lightbox-titulo').textContent = titulo + ' — ' + año;
       document.getElementById('lightbox-desc').textContent = desc;
       document.getElementById('lightbox').classList.add('activo');
     }
