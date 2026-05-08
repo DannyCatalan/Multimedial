@@ -1,68 +1,79 @@
 <!DOCTYPE html>
-<!-- Indica al navegador que este documento usa HTML5 -->
-
-<html>
-<!-- Inicio del documento HTML -->
-
+<html lang="es">
 <head>
-<!-- Sección donde van metadatos, título y estilos -->
-
 <meta charset="UTF-8">
-<!-- Define la codificación de caracteres para que se vean bien tildes y símbolos -->
-
 <title>Multimedial</title>
-<!-- Título de la página que aparece en la pestaña del navegador -->
 
 <style>
-/* Aquí comienza la sección de estilos CSS que define la apariencia visual */
 
-body{
-/* "body" se refiere a todo el contenido visible de la página */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-  background-color: white;
-  /* Define que el fondo de toda la página sea blanco */
+  body {
+    background-color: white;
+    color: black;
+    font-family: "Courier New", monospace;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+  }
 
-  color: black;
-  /* Define que el color del texto sea negro */
+  .titulo {
+    text-align: center;
+  }
 
-  margin: 0;
-  /* Elimina los márgenes que los navegadores agregan por defecto */
+  /* "Marica" con subrayado negro y enlace al manifiesto */
+  .marica {
+    color: black;
+    text-decoration: underline;
+    text-decoration-color: black;
+    text-underline-offset: 6px;
+  }
 
-  height: 100vh;
-  /* Hace que el alto del cuerpo sea igual al 100% de la altura de la pantalla */
+  .marica:hover {
+    opacity: 0.6;
+  }
 
-  display: flex;
-  /* Activa el sistema Flexbox para organizar y centrar elementos */
+  /* Menú debajo del título */
+  .menu-principal {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 20px;
+  }
 
-  justify-content: center;
-  /* Centra el contenido horizontalmente */
+  .menu-principal a {
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: #999;
+    text-decoration: none;
+  }
 
-  align-items: center;
-  /* Centra el contenido verticalmente */
-
-  font-family: Arial, sans-serif;
-  /* Define la tipografía del texto */
-
-  font-size: 60px;
-  /* Define el tamaño grande del texto */
-
-}
-/* Fin de las reglas de estilo del body */
+  .menu-principal a:hover {
+    color: black;
+  }
 
 </style>
-<!-- Fin de la sección de estilos -->
 
 </head>
-<!-- Fin de la sección head -->
 
 <body>
-<!-- Inicio del contenido visible de la página -->
 
-MULTIMEDIAL
-<!-- Texto que aparece en el centro de la pantalla -->
+  <div class="titulo">
+
+    Tráns-ito <a href="manifiesto.html" class="marica">Marica</a>
+
+    <div class="menu-principal">
+      <a href="obra.html">OBRA</a>
+      <a href="contacto.html">CONTACTO</a>
+    </div>
+
+  </div>
 
 </body>
-<!-- Fin del contenido visible -->
-
 </html>
-<!-- Fin del documento HTML -->
